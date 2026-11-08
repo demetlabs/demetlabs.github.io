@@ -109,6 +109,56 @@ header.scrolled{border-color:var(--line);background:#0a1020}
 .card:hover{border-color:rgba(129,140,248,.45);transform:translateY(-4px)}
 .card:hover::before{opacity:1}
 .card>*{position:relative}
+.card{display:flex;flex-direction:column}
+.card[data-svc]{cursor:pointer}
+.more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:11px 18px;border-radius:12px;border:1.5px solid rgba(129,140,248,.45);color:#c7d2fe;font-weight:600;font-size:15px;transition:background .2s,border-color .2s,color .2s}
+.card ul{margin-bottom:26px}
+.more svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.card:hover .more,.more:focus-visible{background:var(--i600);border-color:var(--i600);color:#fff}
+.card:hover .more svg{transform:translateX(3px)}
+/* ventana de detalles */
+.sheet{position:fixed;top:0;left:0;right:0;bottom:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(4,8,18,.74);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.sheet.open{opacity:1;visibility:visible;transition:opacity .25s}
+.sh-box{position:relative;width:100%;max-width:760px;max-height:88vh;display:flex;flex-direction:column;border-radius:26px;background:linear-gradient(180deg,#151e36,#0d1426 40%);border:1px solid rgba(129,140,248,.3);box-shadow:0 50px 100px -30px rgba(0,0,0,.85),0 0 90px -30px rgba(99,102,241,.6);transform:translateY(18px) scale(.98);transition:transform .32s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.sheet.open .sh-box{transform:none}
+.sh-body{overflow-y:auto;padding:38px 40px 26px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.sh-foot{display:flex;gap:12px;padding:18px 40px;border-top:1px solid var(--line);background:#0d1426}
+.sh-foot .btn{flex:1}
+.sh-foot .btn[hidden]{display:none}
+.sh-x{position:absolute;top:16px;right:16px;z-index:2;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(15,23,42,.92);display:grid;place-items:center;transition:background .2s}
+.sh-x:hover{background:var(--i600)}
+.sh-x svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round}
+.sh-head{display:flex;gap:16px;align-items:center;padding-right:48px}
+.sh-head .ico{margin:0;flex:none}
+.sh-head small{display:block;color:var(--i400);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.sh-head h3{font-family:var(--disp);font-size:clamp(25px,3.4vw,34px);color:#fff;letter-spacing:-.02em;line-height:1.05;margin-top:4px}
+.sh-sum{color:var(--txt);font-size:17px;margin-top:22px}
+.sh-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.sh-pills span{padding:6px 12px;border-radius:999px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.38);color:#6ee7b7;font-size:13px;font-weight:600}
+.sh-sec{margin-top:30px}
+.sh-sec h4{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-bottom:14px}
+.sh-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+.sh-list li{display:flex;gap:11px;align-items:flex-start;line-height:1.45}
+.sh-list svg{flex:none;width:20px;height:20px;margin-top:1px;stroke:var(--mint);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.sh-list b{display:block;color:#fff;font-weight:600;font-size:15.5px}
+.sh-list span{display:block;color:var(--mut);font-size:14.5px;margin-top:2px}
+.sh-tags{display:flex;flex-wrap:wrap;gap:8px}
+.sh-tags span{padding:7px 13px;border-radius:10px;background:rgba(99,102,241,.12);border:1px solid rgba(129,140,248,.26);color:#c7d2fe;font-size:14px}
+.sh-need{list-style:none;display:grid;gap:9px;color:var(--txt);font-size:15.5px}
+.sh-need li{display:flex;gap:11px;align-items:baseline}
+.sh-need li::before{content:"";flex:none;width:7px;height:7px;border-radius:2px;background:var(--i400);transform:translateY(-2px)}
+.sh-note{margin-top:22px;padding:14px 16px;border-radius:14px;background:rgba(99,102,241,.1);border:1px solid rgba(129,140,248,.22);color:var(--txt);font-size:14.5px}
+body.ov{overflow:hidden}
+@media(max-width:640px){
+  .sheet{align-items:flex-end;padding:0}
+  .sh-box{max-height:92vh;max-height:92dvh;border-radius:24px 24px 0 0;transform:translateY(60px)}
+  .sh-body{padding:30px 22px 20px}
+  .sh-foot{gap:10px;padding:14px 18px calc(14px + env(safe-area-inset-bottom))}
+  .sh-foot .btn{padding:14px 10px;font-size:15px;white-space:normal;text-align:center}
+  .sh-list{grid-template-columns:1fr}
+  .sh-head{gap:13px}
+  .sh-head .ico{width:48px;height:48px}
+}
 .ico{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(99,102,241,.28),rgba(67,56,202,.1));border:1px solid rgba(129,140,248,.3);margin-bottom:24px}
 .ico svg{width:26px;height:26px;stroke:var(--i400);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-family:var(--disp);font-size:24px;letter-spacing:-.02em;color:#fff;line-height:1.15}
@@ -295,17 +345,19 @@ footer{border-top:1px solid var(--line);padding:38px 0 calc(38px + env(safe-area
     <h2 class="disp rv">Todo lo que tu negocio necesita en línea.</h2>
     <p class="lead rv">Empezamos por lo que más te ayuda a vender hoy y crecemos contigo.</p>
     <div class="cards">
-      <article class="card rv">
+      <article class="card rv" data-svc="web">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M8 21h8M12 18v3"/></svg></div>
         <h3>Páginas web para negocios</h3>
         <p>Una web clara y moderna que presenta tu marca y genera confianza desde el primer vistazo.</p>
         <ul><li>Diseño a tu medida, con tu logo y colores</li><li>Rápida y adaptada a celular, tablet y PC</li><li>Botón de contacto directo a WhatsApp</li></ul>
+        <button type="button" class="more" aria-haspopup="dialog">Ver detalles<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
-      <article class="card rv">
+      <article class="card rv" data-svc="tienda">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
         <h3>Tiendas con catálogo y pedidos</h3>
         <p>Cada tienda es personalizada de acuerdo a tus preferencias: tu marca, tus colores y las secciones que necesitas. Tus clientes arman su carrito y te envían el pedido ya listo por WhatsApp.</p>
         <ul><li>Diseño personalizado a tu gusto y a tu marca</li><li>Catálogo con categorías, tallas y ofertas</li><li>Panel simple para subir y editar productos</li><li>Carrito que arma el mensaje del pedido</li></ul>
+        <button type="button" class="more" aria-haspopup="dialog">Ver detalles<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
       <article class="card rv">
         <span class="soon">Próximamente</span>
@@ -440,6 +492,17 @@ footer{border-top:1px solid var(--line);padding:38px 0 calc(38px + env(safe-area
   </div>
 </footer>
 
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" aria-hidden="true">
+  <div class="sh-box">
+    <button type="button" class="sh-x" id="shX" aria-label="Cerrar detalles"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sh-body" id="shBody"></div>
+    <div class="sh-foot">
+      <a class="btn btn-wa" id="shWa" href="https://wa.me/51910813902" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>Cotizar web</a>
+      <a class="btn btn-ghost" id="shAlt" href="#proyecto">Ver un proyecto real</a>
+    </div>
+  </div>
+</div>
+
 <a href="https://wa.me/51910813902?text=Hola%20Purix%20Labs%2C%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener" class="wa-float" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
 
 <script>
@@ -528,6 +591,103 @@ $('#opts').addEventListener('click',function(e){var b=e.target.closest('.opt');i
 $$('[data-plan]').forEach(function(a){a.addEventListener('click',function(){
   var p=a.dataset.plan;$$('.opt').forEach(function(o){var on=(p==='Plan a medida'&&o.dataset.v==='un sistema a medida')||(p==='Plan Esencial'&&o.dataset.v==='una tienda con catálogo');o.classList.toggle('on',on);if(on)tipo=o.dataset.v})})});
 function abrir(u){var w=window.open(u,'_blank');if(!w)location.href=u}
+
+/* ---------- detalles de cada servicio ---------- */
+var SVC={
+  web:{
+    kicker:'Servicio',
+    titulo:'Páginas web para negocios',
+    ico:'<rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M8 21h8M12 18v3"/>',
+    resumen:'Una web profesional que presenta tu negocio, genera confianza y lleva a tus clientes directo a tu WhatsApp. La diseñamos desde cero con tu marca y según lo que quieres comunicar.',
+    pills:['Diseño personalizado','Hecha para celular','Contacto por WhatsApp'],
+    incluye:[
+      ['Diseño a tu medida','Con tu logo, tus colores y el estilo de tu marca.'],
+      ['Las secciones que necesitas','Inicio, nosotros, servicios, galería, preguntas frecuentes y contacto.'],
+      ['Adaptada a todo dispositivo','Se ve y funciona bien en celular, tablet y computadora.'],
+      ['WhatsApp integrado','Botón flotante y formulario que arma el mensaje por tu cliente.'],
+      ['Animaciones modernas','Detalles visuales que hacen que tu marca destaque.'],
+      ['Ubicación y redes sociales','Mapa de tu local y enlaces a tus redes.'],
+      ['Configuración para Google','Título, descripción y vista previa al compartir tu enlace.'],
+      ['Publicación en internet','La dejamos en línea y te ayudamos a conectar tu dominio propio.']
+    ],
+    ideal:['Restaurantes y cafeterías','Consultorios y clínicas','Estudios y profesionales','Talleres y servicios técnicos','Academias','Emprendimientos'],
+    necesitas:['Tu logo, si ya lo tienes','Fotos de tu negocio o de tu trabajo','Información básica: qué ofreces, horarios y ubicación','Tu número de WhatsApp'],
+    nota:'¿Te falta algo de la lista? No te preocupes: te orientamos para prepararlo. El dominio propio se paga aparte y queda a tu nombre.',
+    wa:'Hola Purix Labs, quiero cotizar una página web para mi negocio.',
+    proyecto:false
+  },
+  tienda:{
+    kicker:'Servicio',
+    titulo:'Tiendas con catálogo y pedidos',
+    ico:'<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+    resumen:'Tu tienda en línea, personalizada de acuerdo a tus preferencias. Tus clientes ven tus productos con fotos y precios, arman su carrito y te envían el pedido listo por WhatsApp.',
+    pills:['Diseño personalizado','Sin comisiones por venta','Pedidos a tu WhatsApp'],
+    incluye:[
+      ['Diseño personalizado','Según tus preferencias, tu marca y tu tipo de productos.'],
+      ['Catálogo organizado','Categorías, buscador y filtros para encontrar todo rápido.'],
+      ['Fichas de producto','Hasta 4 fotos en pantalla completa, descripción, tallas y colores.'],
+      ['Ofertas y destacados','Precio anterior tachado y productos destacados en la portada.'],
+      ['Carrito de compras','Tus clientes eligen varios productos, tallas y cantidades.'],
+      ['Pedido por WhatsApp','El carrito arma el mensaje del pedido y te llega directo.'],
+      ['Panel de administración','Agrega, edita u oculta productos desde tu celular, sin tocar código.'],
+      ['Guía y acompañamiento','Te enseñamos a usar tu tienda paso a paso.']
+    ],
+    ideal:['Ropa y calzado','Accesorios y joyería','Cosméticos y cuidado personal','Emprendimientos que venden por redes','Negocios que ya venden por WhatsApp'],
+    necesitas:['Fotos de tus productos','Lista de productos con precios, tallas y colores','Tu logo','Tu número de WhatsApp'],
+    nota:'Los pagos los coordinas directamente con tu cliente (Yape, Plin, transferencia o como ya trabajas). La tienda no cobra comisión por cada venta.',
+    wa:'Hola Purix Labs, quiero cotizar una tienda con catálogo y pedidos por WhatsApp.',
+    proyecto:true
+  }
+};
+var sheet=$('#sheet'),shBody=$('#shBody'),shWa=$('#shWa'),shAlt=$('#shAlt'),shX=$('#shX'),focoPrevio=null,conHistorial=false;
+var CHK='<svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>';
+function abrirServicio(k){
+  var s=SVC[k];if(!s)return;
+  focoPrevio=document.activeElement;
+  shBody.innerHTML=
+    '<div class="sh-head"><div class="ico"><svg viewBox="0 0 24 24">'+s.ico+'</svg></div><div><small>'+s.kicker+'</small><h3 id="shTitle">'+s.titulo+'</h3></div></div>'+
+    '<p class="sh-sum">'+s.resumen+'</p>'+
+    '<div class="sh-pills">'+s.pills.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>'+
+    '<div class="sh-sec"><h4>Qué incluye</h4><ul class="sh-list">'+s.incluye.map(function(x){return '<li>'+CHK+'<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div></li>'}).join('')+'</ul></div>'+
+    '<div class="sh-sec"><h4>Ideal para</h4><div class="sh-tags">'+s.ideal.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div></div>'+
+    '<div class="sh-sec"><h4>Qué necesitas tener</h4><ul class="sh-need">'+s.necesitas.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'+
+    '<p class="sh-note">'+s.nota+'</p></div>';
+  shBody.scrollTop=0;
+  shWa.href='https://wa.me/'+TEL+'?text='+encodeURIComponent(s.wa);
+  shAlt.hidden=!s.proyecto;
+  sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');
+  document.body.classList.add('ov');
+  setTimeout(function(){shX.focus({preventScroll:true})},60);
+  try{history.pushState({detalles:k},'');conHistorial=true}catch(e){conHistorial=false}
+}
+function cerrarServicio(desdeHistorial){
+  if(!sheet.classList.contains('open'))return;
+  sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');
+  document.body.classList.remove('ov');
+  if(focoPrevio&&focoPrevio.focus)try{focoPrevio.focus({preventScroll:true})}catch(e){}
+  if(!desdeHistorial&&conHistorial){conHistorial=false;history.back()}
+}
+/* abrir: clic en cualquier parte de la tarjeta o en "Ver detalles" */
+$$('.card[data-svc]').forEach(function(c){c.addEventListener('click',function(){abrirServicio(c.getAttribute('data-svc'))})});
+/* cerrar: X, fondo oscuro, tecla Esc o botón "atrás" del celular */
+shX.addEventListener('click',function(){cerrarServicio()});
+sheet.addEventListener('click',function(e){if(e.target===sheet)cerrarServicio()});
+window.addEventListener('popstate',function(){if(sheet.classList.contains('open')){conHistorial=false;cerrarServicio(true)}});
+document.addEventListener('keydown',function(e){
+  if(!sheet.classList.contains('open'))return;
+  if(e.key==='Escape'){e.preventDefault();cerrarServicio();return}
+  if(e.key==='Tab'){
+    var f=$$('#sheet a:not([hidden]),#sheet button').filter(function(x){return x.offsetParent!==null});
+    if(!f.length)return;
+    if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus()}
+    else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus()}
+  }
+});
+shAlt.addEventListener('click',function(e){
+  e.preventDefault();cerrarServicio();
+  setTimeout(function(){$('#proyecto').scrollIntoView({behavior:reduce?'auto':'smooth'})},120);
+});
+
 $('#form').addEventListener('submit',function(e){
   e.preventDefault();
   var n=$('#fn').value.trim(),b=$('#fb').value.trim(),d=$('#fd').value.trim();
